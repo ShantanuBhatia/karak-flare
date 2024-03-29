@@ -1,0 +1,142 @@
+<!doctype html><!-- simplified doctype works for all previous versions of HTML as well -->
+
+<!-- Paul Irish's technique for targeting IE, modified to only target IE6, applied to the html element instead of body -->
+<!--[if IE 6]><html lang="en" class="no-js ie6"><![endif]-->
+<!--[if (gt IE 6)|!(IE)]><!--><html lang="en" class="no-js"><!--<![endif]-->
+
+<head>
+	<!-- simplified character encoding -->
+	<meta charset="utf-8">
+
+	<title>Karak Flare</title>
+	<meta name="description" content="Karak Flare">
+	<meta name="author" content="">
+
+	<!-- Delete these two icon references once you've placed them in the root directory with these file names -->
+	<!-- favicon 16x16 -->
+	<link rel="shortcut icon" href="/favicon.ico">
+	<!-- apple touch icon 57x57 -->
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<meta name="color-scheme" content="light dark" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+	<!-- Main style sheet. Change version number in query string to force styles refresh -->
+	<!-- Link element no longer needs type attribute -->
+	
+ 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+  	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+ 	<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+	<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+
+	<!-- Modernizr for feature detection of CSS3 and HTML5; must be placed in the <head> -->
+	<!-- This is a *full-featured* version of Modernizr; you don't need all this -->
+	<!-- Go to Modernizr.com/download and build your own -->
+	<!-- In HTML5, script tag no longer needs type attribute -->
+	<script src="js/modernizr-2.0.6.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Remove the script reference below if you're using Modernizr -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<!-- If possible, use the body as the container -->
+<!-- The "home" class is an example of a dynamic class created on the server for page-specific targeting -->
+<body class="home">
+	
+	<!-- ******************************************************************** -->
+	<!-- The content below is for demonstration of some common HTML5 elements  -->
+	<!-- More than likely you'll rip out everything except header/section/footer and start fresh -->
+	
+	<!-- First header has a unique class so you can give it individual styles -->
+	<header class="hd1">
+
+		
+			<!-- Main nav; you can have more than one nav element per page -->
+			<nav>
+				<ul>
+			        <li><b><a href="#" class='nav-item-text'>Karak Flare</a></b></li>
+		    	</ul>
+			    <input id='menu' type='checkbox' />
+			    <label id='menu-icon' for='menu' tabindex="0">
+			        ▸
+			    </label>
+			    
+				<ul class='nav-menu-items nav-wrapper'>
+						<li><a href="#" class='nav-item-text'>About</a></li>
+						<li><a href="#" class='nav-item-text'>Contact Me</a></li>
+						<li><a href="#" class='nav-item-text'>Logout</a></li>
+
+				</ul>
+
+				
+			</nav>
+
+	</header><!-- .hd1 -->
+
+	<!-- This is the main "div" that wraps the content generically; don't use "section" for this -->
+	<div class="main">
+
+		<!-- The first of two "section" elements for demo purposes; optional class added for styling (hs1 = "home section 1") -->
+		<section class="hs1">
+		<!-- Each section should begin with a new h1 (not h2), and optionally a header -->
+		<!-- You can have more than one header/footer pair on a page -->
+			<header>
+			<h1>Main Map Section</h1>
+			</header>
+	
+
+			<h2>Hangout Text Goes Here</h2>
+			
+			<div id="mapId"></div>
+			
+
+		</section><!-- .hs1 -->
+
+		<!-- This is another section; doesn't have header/footer because it's not required -->
+		<section class="hs2">
+			<h1>Send a Karak Flare</h1>
+			<p id="selected-hangout-spot">Select a hangout spot to get started</p>
+			<div id="action-buttons-container">
+				<!-- dynamically generated buttons will appear here -->
+			</div>
+		</section><!-- .hs2 -->
+
+	</div><!-- .main -->
+
+
+	<!-- Like the main header, the main footer has a class for its own unique styles -->
+	<footer class="f1">
+	<p>copyright Shantanu "Sean" Bhatia &copy; 2024</p>
+	</footer><!-- .f1 -->
+
+<!-- Remote jQuery with local fallback; taken from HTML5 Boilerplate http://html5boilerplate.com -->
+<!-- jQuery version might not be the latest; check jquery.com -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery-1.6.4.min.js"%3E%3C/script%3E'))</script>
+
+<!-- Below is your script file, which has a basic JavaScript design pattern that you can optionally use -->
+<!-- Keep this and plugin scripts at the bottom for faster page load; combining and minifying scripts is recommended -->
+<script src="js/general.js"></script>
+
+<!-- asynchronous analytics code by Mathias Bynens; change UA-XXXXX-X to your own code; http://mathiasbynens.be/notes/async-analytics-snippet -->
+<!-- this can also be placed in the <head> if you want page views to be tracked quicker -->
+<script>
+var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+(function(d, t) {
+	var g = d.createElement(t),
+		s = d.getElementsByTagName(t)[0];
+	g.async = true;
+	g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g, s);
+})(document, 'script');
+</script>
+</body>
+</html>
